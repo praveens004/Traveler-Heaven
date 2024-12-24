@@ -3,7 +3,7 @@ import {CardNumberElement} from "@stripe/react-stripe-js";
 import axios from "axios";
 import {createBooking} from "../../Store/Booking/booking-action";
 
-
+const BASE_URL = "https://traveler-heaven-backkend.onrender.com";
 export const processPayment=({
     totalAmount,
     stripe,
@@ -27,7 +27,7 @@ export const processPayment=({
         }
         const cardNumberElement=elements.getElement(CardNumberElement);
         try{
-            const response =await axios.post("/api/v1/rent/user/checkout-session",
+            const response =await axios.post(`${BASE_URL}/api/v1/rent/user/checkout-session`,
         {
             amount:totalAmount,
             currency:"inr",
