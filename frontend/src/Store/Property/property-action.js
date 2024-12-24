@@ -1,13 +1,13 @@
 import axios from "axios";
 import { propertyAction } from "./property-slice";
-
+const BASE_URL = "https://traveler-heaven-backkend.onrender.com";
 //action creator to fetch  property 
 export const getAllProperties=()=>async(dispatch,getState)=>{
     try{
         dispatch(propertyAction.getRequest())
 
         const {searchParams}=getState().properties
-        const response=await axios.get(`/api/v1/rent/listing`,{
+        const response=await axios.get(`${BASE_URL}/api/v1/rent/listing`,{
             params:{...searchParams},
         });
 
